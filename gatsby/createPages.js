@@ -23,9 +23,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
-    console.log('result', JSON.stringify(result, null, 4))
     result.data.allMdx.edges.forEach(({ node }) => {
-      console.log('create page', node.fields.slug)
       createPage({
         path: replacePath(node.fields.slug),
         component: Template,
