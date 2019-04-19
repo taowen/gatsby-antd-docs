@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import Card from 'antd/lib/card'
 import 'antd/lib/card/style/css'
 
+export const HelloWorld = () => <Card title="hello World" />
+
 export const PostCard = ({ post }) => (
   <div>
     <Card

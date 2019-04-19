@@ -5,15 +5,13 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   const Template = path.resolve(`src/templates/Template.tsx`)
-
+  // sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMdx {
         edges {
           node {
+            id
             fields {
               slug
             }
@@ -25,12 +23,13 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
-
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    console.log('result', JSON.stringify(result, null, 4))
+    result.data.allMdx.edges.forEach(({ node }) => {
+      console.log('create page', node.fields.slug)
       createPage({
         path: replacePath(node.fields.slug),
         component: Template,
-        context: {}, // additional data can be passed via context
+        context: { id: node.id }, // additional data can be passed via context
       })
     })
   })

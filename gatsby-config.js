@@ -60,6 +60,36 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        defaultLayouts: {
+          // default: require.resolve('./src/Layout.tsx'),
+          default: require.resolve('./src/Layout.tsx'),
+        },
+        extensions: ['.mdx', '.md'],
+        remarkPlugins: [require('gatsby-transformer-remark')],
+        gatsbyRemarkPlugins: [
+          'gatsby-remark-katex',
+          'gatsby-remark-autolink-headers',
+          // 'gatsby-remark-prismjs',
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                `gatsby-remark-katex`,
+                {
+                  resolve: `gatsby-remark-autolink-headers`,
+                  options: {
+                    className: 'post-toc-anchor',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
     `gatsby-plugin-remove-trailing-slashes`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline

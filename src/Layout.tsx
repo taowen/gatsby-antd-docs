@@ -18,7 +18,7 @@ export function RootLayout({ children, sidebarRoot }: any) {
               title
             }
           }
-          allMarkdownRemark {
+          allMdx {
             edges {
               node {
                 fields {
@@ -30,7 +30,7 @@ export function RootLayout({ children, sidebarRoot }: any) {
         }
       `}
       render={data => {
-        const allPosts = data.allMarkdownRemark.edges.map(
+        const allPosts = data.allMdx.edges.map(
           (edge: any) => edge.node.fields.slug
         )
         let onPostPage
@@ -114,3 +114,5 @@ export function RootLayout({ children, sidebarRoot }: any) {
     />
   )
 }
+
+export default RootLayout
