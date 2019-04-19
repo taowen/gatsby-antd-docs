@@ -24,9 +24,9 @@ import { RootLayout as Layout } from '../Layout'
 //   )
 // }
 function PageTemplate({ data: { mdx } }: any) {
+  console.log({ mdx })
   return (
     <Layout sidebarRoot={mdx.frontmatter.root}>
-      <h1>{mdx.frontmatter.title}</h1>
       <MDXRenderer>{mdx.code.body}</MDXRenderer>
       <div className="blog-post-container">
         <div className="blog-post">
@@ -43,6 +43,7 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+        root
       }
       code {
         body

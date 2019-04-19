@@ -41,7 +41,7 @@ export function TableOfContents() {
     const anchors = document.getElementsByClassName('post-toc-anchor')
     setAnchors(filterAnchorDetails(anchors))
   }, [])
-
+  console.log({ anchors })
   const loop = data =>
     data.map(item => {
       if (item.children.length > 0) {

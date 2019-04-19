@@ -33,6 +33,7 @@ export function RootLayout({ children, sidebarRoot }: any) {
         const allPosts = data.allMdx.edges.map(
           (edge: any) => edge.node.fields.slug
         )
+        console.log({ allPosts })
         let onPostPage
         if (typeof window !== 'undefined') {
           const path = window.location.pathname.replace(

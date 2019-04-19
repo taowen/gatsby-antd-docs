@@ -87,11 +87,13 @@ export const SidebarContents = ({ root }: Props) => {
         }
       `}
       render={data => {
+        console.log({ data, root })
         const [tree, dir] = convertToTree(
           data.allMdx.edges.filter(node =>
             node.node.fields.slug.startsWith(root)
           )
         )
+        console.log({ tree, dir })
         sortTree(tree)
         const loop = data =>
           data.map(item => {
