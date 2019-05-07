@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Ant-Design Documentation Starter',
+    title: "HOME"
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -22,14 +22,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `menuItems`,
-        path: `${__dirname}/src/menuItems`,
+        path: `${process.env.HOMEPAGE_ROOT}/menuItems`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `contents`,
-        path: `${__dirname}/contents`,
+        path: `${process.env.HOMEPAGE_ROOT}/contents`,
       },
     },
     'gatsby-transformer-sharp',
